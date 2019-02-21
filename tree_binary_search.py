@@ -26,22 +26,59 @@ class BinarySearchTree(object):
                 else:
                     curr_node = curr_node.right
 
-    def _search(self, val, curr_node=None):
-        curr_node = curr_node or self.root
-        prnt_node = None
-        while curr_node is not None and curr_node.data != val:
-            prnt_node = curr_node
-            curr_node = curr_node.left if curr_node.data > val else curr_node.right
-        return curr_node, prnt_node
-
     def search(self, val):
-        return self._search(val)[0]
+        curr_node = self.root
+        while curr_node is not None and curr_node.data != val:
+            curr_node = curr_node.left if curr_node.data > val else curr_node.right
+        return curr_node
     
     def delete(self, val):
-        srch_opt = self._search(val)
-
+        prnt_node = None
+        srch_node = self.root
+        while srch_node is not None and srch_node.data != val:
+            prnt_node = srch_node
+            srch_node = srch_node.left if srch_node.data > val else srch_node.right
+        
+        if srch_node is None:
+            raise ValueError('Value to be deleted not found')
+        elif srch_node.left is None and srch_node.right is None:
+            if prnt_node is None:
+                self.root = None
+            elif prnt_node.left == srch_node:
+                prnt_node.left = None
+            else:
+                prnt_node.right = None
+        elif srch_node.left is not None:
+            curr_node = srch_node.left
+            if curr_node.right is None:
+                srch_node.data = curr_node.data
+                srch_node.left = curr_node.left
+                curr_node.left = None
+            else:
+                while curr_node.right.right is not None:
+                    curr_node = curr_node.right
+                srch_node.data = curr_node.right.data
+                repl_node = curr_node.right
+                curr_node.right = repl_node.left
+                repl_node.left = None
+        else:
+            curr_node = srch_node.right
+            if curr_node.left is None:
+                srch_node.data = curr_node.data
+                srch_node.right = curr_node.right
+                curr_node.right = None
+            else:
+                while curr_node.left.left is not None:
+                    curr_node = curr_node.left
+                srch_node.data = curr_node.left.data
+                repl_node = curr_node.left
+                curr_node.left = repl_node.right
+                repl_node.right = None
 
 class RecursiveTraversal(object):
+    """
+    traverses a tree using recursion
+    """
     @staticmethod    
     def level_order_traversal(root:Node):
         pass
@@ -74,6 +111,9 @@ class RecursiveTraversal(object):
         return opt
 
 class IterativeTraversal(object):
+    """
+    traverses a tree using additional storage (queue/stack)
+    """
     @staticmethod    
     def level_order_traversal(root:Node):
         if root is None:
@@ -131,3 +171,71 @@ class IterativeTraversal(object):
             if last_node.right is not None:
                 stack.append(last_node.right)
         return opt[::-1]
+
+class ThreadedTraversal(object):
+    """
+    traverses a tree without the need of additional storage or recursion
+    ref: https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion-and-without-stack/
+    """
+    @staticmethod    
+    def level_order_traversal(root:Node):
+        pass
+    
+    @staticmethod
+    def pre_order_traversal(root:Node):
+        pass
+    
+    @staticmethod
+    def in_order_traversal(root:Node):
+        pass
+
+    @staticmethod
+    def post_order_traversal(root:Node):
+        pass
+
+class NonThreadedTraversal(object):
+    """
+    traverses a tree without the need of threads, additional storage or recursion
+    ref: https://www.geeksforgeeks.org/inorder-non-threaded-binary-tree-traversal-without-recursion-or-stack/
+    """
+    @staticmethod    
+    def level_order_traversal(root:Node):
+        pass
+    
+    @staticmethod
+    def pre_order_traversal(root:Node):
+        pass
+    
+    @staticmethod
+    def in_order_traversal(root:Node):
+        pass
+
+    @staticmethod
+    def post_order_traversal(root:Node):
+        pass
+
+class TrivialTraversal(object):
+    @staticmethod
+    def zig_zag_traversal(root:Node):
+        pass
+    
+    @staticmethod
+    def boundary_traversal(root:Node):
+        pass
+
+    @staticmethod
+    def diagonal_traversal(root:Node):
+        pass
+
+class TreeRetrieval(object):
+    @staticmethod
+    def from_in_order_and_pre_order(in_order, pre_order):
+        pass
+
+    @staticmethod
+    def from_in_order_and_post_order(in_order, post_order):
+        pass
+
+    @staticmethod
+    def from_in_order_and_level_order(in_order, level_order):
+        pass
