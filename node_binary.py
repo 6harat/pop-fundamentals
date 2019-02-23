@@ -4,6 +4,7 @@ class BinaryNode(object):
         self.left = left
         self.right = right
 
+    # add null checks for `that` node in all the comparisons below and reduce __ne__ as not of __eq__
     def __eq__(self, that):
         return self.data == that.data
     def __ne__(self, that):

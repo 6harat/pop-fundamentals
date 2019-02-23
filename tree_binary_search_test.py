@@ -1,7 +1,8 @@
 from tree_binary_search import (
     BinarySearchTree as bst,
-    IterativeTraversal as itv,
-    RecursiveTraversal as rtv
+    StandardTraversal as stv,
+    CustomTraversal as ctv,
+    TreeBuilder as tbd
 )
 
 def getTree():
@@ -17,3 +18,9 @@ def getTree():
 
 if __name__ == '__main__':
     tree = getTree()
+
+
+#             20
+#     12              29
+# 8       15              41
+#                     31      59

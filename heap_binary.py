@@ -23,7 +23,7 @@ class BinaryHeap(object):
         return None if r_idx >= self._size else r_idx
 
     def _heapify(self):
-        for i in xrange(self._size-1, -1, -1):
+        for i in range(self._size-1, -1, -1):
             self._heapifyDown(idx=i)
 
     def _is_in_order(self, parent, child):
@@ -63,6 +63,9 @@ class BinaryHeap(object):
             self._swap(idx, selected_idx)
             idx = selected_idx
         return
+
+    def is_empty(self):
+        return self._size == 0
 
     def push(self, val):
         self._vals.append(val)

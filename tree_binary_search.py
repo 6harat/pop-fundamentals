@@ -74,48 +74,29 @@ class BinarySearchTree(object):
                 repl_node = curr_node.left
                 curr_node.left = repl_node.right
                 repl_node.right = None
+    @staticmethod
+    def checkForEquality(xtree, ytree):
+        if xtree ^ ytree:
+            return False
+        if xtree is None and ytree is None:
+            return True
+        pass
 
-class RecursiveTraversal(object):
+    def __eq__(self, that):
+        return BinarySearchTree.checkForEquality(self, that)
+    def __ne__(self, that):
+        return not self.__eq__(that)
+    
+class StandardTraversal(object):
     """
-    traverses a tree using recursion
+    traverses a tree in level-order, pre-order, in-order or post-order
     """
     @staticmethod    
-    def level_order_traversal(root:Node):
+    def level_order_traversal_recursive(root:Node):
         pass
     
-    @staticmethod
-    def pre_order_traversal(root:Node):
-        if root is None:
-            return []
-        opt = [root.data]
-        opt.extend(RecursiveTraversal.pre_order_traversal(root.left))
-        opt.extend(RecursiveTraversal.pre_order_traversal(root.right))
-        return opt
-    
-    @staticmethod
-    def in_order_traversal(root:Node):
-        if root is None:
-            return []
-        opt = RecursiveTraversal.in_order_traversal(root.left)
-        opt.append(root.data)
-        opt.extend(RecursiveTraversal.in_order_traversal(root.right))
-        return opt
-
-    @staticmethod
-    def post_order_traversal(root:Node):
-        if root is None:
-            return []
-        opt = RecursiveTraversal.post_order_traversal(root.left)
-        opt.extend(RecursiveTraversal.post_order_traversal(root.right))
-        opt.append(root.data)
-        return opt
-
-class IterativeTraversal(object):
-    """
-    traverses a tree using additional storage (queue/stack)
-    """
     @staticmethod    
-    def level_order_traversal(root:Node):
+    def level_order_traversal_iterative(root:Node):
         if root is None:
             return []
         from collections import deque
@@ -129,9 +110,18 @@ class IterativeTraversal(object):
                 if curr_node.left is not None: dq.append(curr_node.left)
                 if curr_node.right is not None: dq.append(curr_node.right)
         return opt
+
+    @staticmethod
+    def pre_order_traversal_recursive(root:Node):
+        if root is None:
+            return []
+        opt = [root.data]
+        opt.extend(StandardTraversal.pre_order_traversal(root.left))
+        opt.extend(StandardTraversal.pre_order_traversal(root.right))
+        return opt
     
     @staticmethod
-    def pre_order_traversal(root:Node):
+    def pre_order_traversal_iterative(root:Node):
         if root is None:
             return []
         stack, opt, curr_node = [], [], root
@@ -143,9 +133,18 @@ class IterativeTraversal(object):
             last_node = stack.pop()
             curr_node = last_node.right
         return opt
-    
+
     @staticmethod
-    def in_order_traversal(root:Node):
+    def in_order_traversal_recursive(root:Node):
+        if root is None:
+            return []
+        opt = StandardTraversal.in_order_traversal(root.left)
+        opt.append(root.data)
+        opt.extend(StandardTraversal.in_order_traversal(root.right))
+        return opt
+
+    @staticmethod
+    def in_order_traversal_iterative(root:Node):
         if root is None:
             return []
         stack, opt, curr_node = [root], [], root.left
@@ -159,7 +158,16 @@ class IterativeTraversal(object):
         return opt
 
     @staticmethod
-    def post_order_traversal(root:Node):
+    def post_order_traversal_recursive(root:Node):
+        if root is None:
+            return []
+        opt = StandardTraversal.post_order_traversal(root.left)
+        opt.extend(StandardTraversal.post_order_traversal(root.right))
+        opt.append(root.data)
+        return opt
+
+    @staticmethod
+    def post_order_traversal_iterative(root:Node):
         if root is None:
             return []
         stack, opt = [root], []
@@ -214,28 +222,134 @@ class NonThreadedTraversal(object):
     def post_order_traversal(root:Node):
         pass
 
-class TrivialTraversal(object):
+class CustomTraversal(object):
     @staticmethod
-    def zig_zag_traversal(root:Node):
-        pass
+    def zig_zag_traversal_iterative_queue(root:Node):
+        opt = []
+        if root is None:
+            return opt
+        from collections import deque
+        fwd, bwd = deque(), deque()
+        fwd.append(root)
+        while fwd or bwd:
+            opt.extend(map(lambda n: n.data, fwd))
+            while fwd:
+                curr_node = fwd.popleft()
+                if curr_node.left is not None:
+                    bwd.append(curr_node.left)
+                if curr_node.right is not None:
+                    bwd.append(curr_node.right)
+            opt.extend(map(lambda n: n.data, reversed(bwd)))
+            while bwd:
+                curr_node = bwd.popleft()
+                if curr_node.left is not None:
+                    fwd.append(curr_node.left)
+                if curr_node.right is not None:
+                    fwd.append(curr_node.right)
+        return opt
     
     @staticmethod
-    def boundary_traversal(root:Node):
+    def zig_zag_traversal_iterative_stack(root:Node):
+        opt = []
+        if root is None:
+            return opt
+        curr_stack, next_stack = [], []
+        curr_stack.append(root)
+        append_left_then_right = True
+        while curr_stack:
+            while curr_stack:
+                node = curr_stack.pop()
+                opt.append(node.data)
+                if append_left_then_right:
+                    if node.left is not None:
+                        next_stack.append(node.left)
+                    if node.right is not None:
+                        next_stack.append(node.right)
+                else:
+                    if node.right is not None:
+                        next_stack.append(node.right)
+                    if node.left is not None:
+                        next_stack.append(node.left)
+            append_left_then_right = not append_left_then_right
+            temp_stack = curr_stack
+            curr_stack = next_stack
+            next_stack = temp_stack
+        return opt
+
+    @staticmethod
+    def zig_zag_traversal_recursive(root:Node):
         pass
+
+    @staticmethod
+    def boundary_traversal(root:Node):
+        opt = []
+        if root is None:
+            return opt
+        opt.append(root.data)
+        def is_leaf(node):
+            return node is not None and node.left is None and node.right is None
+
+        def left_boundary():
+            curr_node = root.left
+            left_nodes = []
+            while curr_node is not None and not is_leaf(curr_node):
+                left_nodes.append(curr_node.data)
+                curr_node = curr_node.left
+            return left_nodes
+        def leaves_boundary():
+            opt = []
+            from collections import deque
+            dq = deque()
+            dq.append(root)
+            while dq:
+                curr_node = dq.popleft()
+                if is_leaf(curr_node):
+                    opt.append(curr_node.data)
+                else:
+                    if curr_node.left is not None:
+                        dq.append(curr_node.left)
+                    if curr_node.right is not None:
+                        dq.append(curr_node.right)
+            return opt
+        def right_boundary():
+            curr_node = root.right
+            right_nodes = []
+            while curr_node is not None and not is_leaf(curr_node):
+                right_nodes.append(curr_node.data)
+                curr_node = curr_node.right
+            return right_nodes
+        opt.extend(left_boundary())
+        opt.extend(leaves_boundary())
+        opt.extend(right_boundary()[::-1])
+        return opt
 
     @staticmethod
     def diagonal_traversal(root:Node):
+        """
+        ref: https://www.geeksforgeeks.org/diagonal-traversal-of-binary-tree/
+        """
         pass
 
-class TreeRetrieval(object):
+class TreeBuilder(object):
     @staticmethod
-    def from_in_order_and_pre_order(in_order, pre_order):
+    def from_in_order_and_pre_order(in_order_seq, pre_order_seq):
+        if in_order_seq ^ pre_order_seq:
+            raise ValueError('traversal sequences do not belong to the same tree')
+        if not in_order_seq and not pre_order_seq:
+            return BinarySearchTree()
+        
+
+
+    @staticmethod
+    def from_in_order_and_post_order(in_order_seq, post_order_seq):
         pass
 
     @staticmethod
-    def from_in_order_and_post_order(in_order, post_order):
+    def from_in_order_and_level_order(in_order_seq, level_order_seq):
         pass
 
-    @staticmethod
-    def from_in_order_and_level_order(in_order, level_order):
-        pass
+class TraversalSequenceEvaluator(object):
+    """
+    identifies if the traversal sequence are of the same tree
+    """
+    pass
