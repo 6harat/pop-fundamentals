@@ -1,0 +1,2 @@
+class Trie(object):
+    pass

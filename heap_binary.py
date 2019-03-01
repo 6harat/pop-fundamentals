@@ -23,6 +23,9 @@ class BinaryHeap(object):
         return None if r_idx >= self._size else r_idx
 
     def _heapify(self):
+        """
+        ref: https://www.geeksforgeeks.org/time-complexity-of-building-a-heap/
+        """
         for i in range(self._size-1, -1, -1):
             self._heapifyDown(idx=i)
 

@@ -1,7 +1,11 @@
-from node_binary import BinaryNode as Node
+from tree_nodes import BinaryNode as Node
 from numbers import Real as numeric
 
 class BinarySearchTree(object):
+    """
+    ref: https://www.geeksforgeeks.org/write-c-code-to-determine-if-two-trees-are-identical/
+         https://www.geeksforgeeks.org/find-lca-in-binary-tree-using-rmq/
+    """
     def __init__(self, val=None):
         self.root = Node(val) if val is not None else None
 
@@ -13,7 +17,7 @@ class BinarySearchTree(object):
             return
         curr_node = self.root
         while True:
-            if curr_node.data > val:
+            if curr_node.key > val:
                 if curr_node.left is None:
                     curr_node.left = Node(val)
                     return
@@ -28,16 +32,16 @@ class BinarySearchTree(object):
 
     def search(self, val):
         curr_node = self.root
-        while curr_node is not None and curr_node.data != val:
-            curr_node = curr_node.left if curr_node.data > val else curr_node.right
+        while curr_node is not None and curr_node.key != val:
+            curr_node = curr_node.left if curr_node.key > val else curr_node.right
         return curr_node
     
     def delete(self, val):
         prnt_node = None
         srch_node = self.root
-        while srch_node is not None and srch_node.data != val:
+        while srch_node is not None and srch_node.key != val:
             prnt_node = srch_node
-            srch_node = srch_node.left if srch_node.data > val else srch_node.right
+            srch_node = srch_node.left if srch_node.key > val else srch_node.right
         
         if srch_node is None:
             raise ValueError('Value to be deleted not found')
@@ -51,26 +55,26 @@ class BinarySearchTree(object):
         elif srch_node.left is not None:
             curr_node = srch_node.left
             if curr_node.right is None:
-                srch_node.data = curr_node.data
+                srch_node.key = curr_node.key
                 srch_node.left = curr_node.left
                 curr_node.left = None
             else:
                 while curr_node.right.right is not None:
                     curr_node = curr_node.right
-                srch_node.data = curr_node.right.data
+                srch_node.key = curr_node.right.key
                 repl_node = curr_node.right
                 curr_node.right = repl_node.left
                 repl_node.left = None
         else:
             curr_node = srch_node.right
             if curr_node.left is None:
-                srch_node.data = curr_node.data
+                srch_node.key = curr_node.key
                 srch_node.right = curr_node.right
                 curr_node.right = None
             else:
                 while curr_node.left.left is not None:
                     curr_node = curr_node.left
-                srch_node.data = curr_node.left.data
+                srch_node.key = curr_node.left.key
                 repl_node = curr_node.left
                 curr_node.left = repl_node.right
                 repl_node.right = None
@@ -93,6 +97,7 @@ class StandardTraversal(object):
     """
     @staticmethod    
     def level_order_traversal_recursive(root:Node):
+        # https://www.geeksforgeeks.org/level-order-tree-traversal/
         pass
     
     @staticmethod    
@@ -106,7 +111,7 @@ class StandardTraversal(object):
         while dq:
             curr_node = dq.popleft()
             if curr_node is not None:
-                opt.append(curr_node.data)
+                opt.append(curr_node.key)
                 if curr_node.left is not None: dq.append(curr_node.left)
                 if curr_node.right is not None: dq.append(curr_node.right)
         return opt
@@ -115,7 +120,7 @@ class StandardTraversal(object):
     def pre_order_traversal_recursive(root:Node):
         if root is None:
             return []
-        opt = [root.data]
+        opt = [root.key]
         opt.extend(StandardTraversal.pre_order_traversal(root.left))
         opt.extend(StandardTraversal.pre_order_traversal(root.right))
         return opt
@@ -127,7 +132,7 @@ class StandardTraversal(object):
         stack, opt, curr_node = [], [], root
         while stack or curr_node:
             while curr_node is not None:
-                opt.append(curr_node.data)
+                opt.append(curr_node.key)
                 stack.append(curr_node)
                 curr_node = curr_node.left
             last_node = stack.pop()
@@ -139,7 +144,7 @@ class StandardTraversal(object):
         if root is None:
             return []
         opt = StandardTraversal.in_order_traversal(root.left)
-        opt.append(root.data)
+        opt.append(root.key)
         opt.extend(StandardTraversal.in_order_traversal(root.right))
         return opt
 
@@ -153,7 +158,7 @@ class StandardTraversal(object):
                 stack.append(curr_node)
                 curr_node = curr_node.left
             last_node = stack.pop()
-            opt.append(last_node.data)
+            opt.append(last_node.key)
             curr_node = last_node.right
         return opt
 
@@ -163,7 +168,7 @@ class StandardTraversal(object):
             return []
         opt = StandardTraversal.post_order_traversal(root.left)
         opt.extend(StandardTraversal.post_order_traversal(root.right))
-        opt.append(root.data)
+        opt.append(root.key)
         return opt
 
     @staticmethod
@@ -173,7 +178,7 @@ class StandardTraversal(object):
         stack, opt = [root], []
         while stack:
             last_node = stack.pop()
-            opt.append(last_node.data)
+            opt.append(last_node.key)
             if last_node.left is not None:
                 stack.append(last_node.left)
             if last_node.right is not None:
@@ -232,14 +237,14 @@ class CustomTraversal(object):
         fwd, bwd = deque(), deque()
         fwd.append(root)
         while fwd or bwd:
-            opt.extend(map(lambda n: n.data, fwd))
+            opt.extend(map(lambda n: n.key, fwd))
             while fwd:
                 curr_node = fwd.popleft()
                 if curr_node.left is not None:
                     bwd.append(curr_node.left)
                 if curr_node.right is not None:
                     bwd.append(curr_node.right)
-            opt.extend(map(lambda n: n.data, reversed(bwd)))
+            opt.extend(map(lambda n: n.key, reversed(bwd)))
             while bwd:
                 curr_node = bwd.popleft()
                 if curr_node.left is not None:
@@ -250,6 +255,10 @@ class CustomTraversal(object):
     
     @staticmethod
     def zig_zag_traversal_iterative_stack(root:Node):
+        """
+        ref: https://www.geeksforgeeks.org/zig-zag-traversal-of-a-binary-tree-using-recursion/
+             https://www.geeksforgeeks.org/reverse-zigzag-traversal-of-a-binary-tree/
+        """
         opt = []
         if root is None:
             return opt
@@ -259,7 +268,7 @@ class CustomTraversal(object):
         while curr_stack:
             while curr_stack:
                 node = curr_stack.pop()
-                opt.append(node.data)
+                opt.append(node.key)
                 if append_left_then_right:
                     if node.left is not None:
                         next_stack.append(node.left)
@@ -285,7 +294,7 @@ class CustomTraversal(object):
         opt = []
         if root is None:
             return opt
-        opt.append(root.data)
+        opt.append(root.key)
         def is_leaf(node):
             return node is not None and node.left is None and node.right is None
 
@@ -293,7 +302,7 @@ class CustomTraversal(object):
             curr_node = root.left
             left_nodes = []
             while curr_node is not None and not is_leaf(curr_node):
-                left_nodes.append(curr_node.data)
+                left_nodes.append(curr_node.key)
                 curr_node = curr_node.left
             return left_nodes
         def leaves_boundary():
@@ -304,7 +313,7 @@ class CustomTraversal(object):
             while dq:
                 curr_node = dq.popleft()
                 if is_leaf(curr_node):
-                    opt.append(curr_node.data)
+                    opt.append(curr_node.key)
                 else:
                     if curr_node.left is not None:
                         dq.append(curr_node.left)
@@ -315,7 +324,7 @@ class CustomTraversal(object):
             curr_node = root.right
             right_nodes = []
             while curr_node is not None and not is_leaf(curr_node):
-                right_nodes.append(curr_node.data)
+                right_nodes.append(curr_node.key)
                 curr_node = curr_node.right
             return right_nodes
         opt.extend(left_boundary())
@@ -333,6 +342,9 @@ class CustomTraversal(object):
 class TreeBuilder(object):
     @staticmethod
     def from_in_order_and_pre_order(in_order_seq, pre_order_seq):
+        """
+        ref: https://www.geeksforgeeks.org/construct-tree-from-given-inorder-and-preorder-traversal/
+        """
         if in_order_seq ^ pre_order_seq:
             raise ValueError('traversal sequences do not belong to the same tree')
         if not in_order_seq and not pre_order_seq:
