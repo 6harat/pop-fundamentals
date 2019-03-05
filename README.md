@@ -12,3 +12,15 @@ a collection of implementation of data structures and algorithms for general app
 - https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
 - https://www.geeksforgeeks.org/advanced-data-structures/
 - https://www.geeksforgeeks.org/persistent-data-structures/
+
+# in the queue:
+- [ ] rabin_karp
+- [x] minimum edit
+- [ ] manacher's algo
+- [ ] z algorithm
+- [ ] egg dropping problem
+- [ ] fenwick tree
+- [ ] merge sort
+- [ ] binomial heap
+- [ ] fibonacci heap
+- [ ] missing recursive/iterative tree traversals

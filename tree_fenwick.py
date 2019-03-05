@@ -1,8 +1,13 @@
 class FenwickTree(object):
     """
-    also known as binary indexed tree
+    aka: binary indexed tree
     ref: https://www.geeksforgeeks.org/binary-indexed-tree-or-fenwick-tree-2/
          https://www.geeksforgeeks.org/binary-indexed-tree-range-update-range-queries/
+
+    preprocess_time_complexity: O(n logn)
+    space_complexity: O(n)
+    update_time_complexity: O(log n)
+    query_time_complexity: O(log n)
     """
     pass
 

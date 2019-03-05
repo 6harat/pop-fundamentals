@@ -156,6 +156,12 @@ class SuffixArray(object):
     """
     pass
 
+class EnhancedSufixArray(object):
+    pass
+
+class SparseSuffixArray(object):
+    pass
+
 class SelfOrganizingList(object):
     """
     ref: https://www.geeksforgeeks.org/self-organizing-list-set-1-introduction/
