@@ -1,3 +1,7 @@
+"""
+total number of trees possible with n nodes: combinations(2n, n)/n+1
+"""
+
 from tree_nodes import BinaryNode as Node
 from numbers import Real as numeric
 
