@@ -16,6 +16,9 @@ ref: https://www.youtube.com/watch?v=OQ5jsbhAv_M
      https://www.youtube.com/watch?v=ENyox7kNKeY
      https://www.youtube.com/watch?v=ocZMDMZwhCY
      https://www.youtube.com/watch?v=tp4_UXaVyx8
+
+also read more theory about parent pointers in detail which helps us
+get the path to follow to get the optimized solution.
 """
 
 
@@ -71,6 +74,22 @@ def longest_common_subsequence():
     """
     pass
 
+arr = [3, 4, -1, 0, 6, 2, 3]
+def longest_increasing_subsequence(arr):
+    """
+    ref: https://www.youtube.com/watch?v=CE2b_-XfVDk
+    """
+    larr = len(arr)
+    mtx = [1]*larr
+    j, i = 0, 1
+    while i < larr:
+        if arr[j] < arr[i]:
+            mtx[i] = max(mtx[i], mtx[j]+1)
+        j += 1
+        if i == j:
+            i += 1
+            j = 0
+    return max(mtx)
 
 text = 'agbdba'
 def longest_palindromic_subsequence(text):

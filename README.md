@@ -5,6 +5,7 @@ a collection of implementation of data structures and algorithms for general app
 - complete list of data structures: https://en.wikipedia.org/wiki/List_of_data_structures
 
 # theory:
+- [ ] algorithm_design_and_analysis: http://web.cs.ucdavis.edu/~gusfield/cs122f10/videolist.html
 - [ ] intro_to_computer_science:
     https://www.youtube.com/watch?v=k6U-i4gXkLM&list=PL4C4720A6F225E074
     https://www.youtube.com/watch?v=bX3jvD7XFPs&list=PLB2BE3D6CA77BB8F7
@@ -52,6 +53,7 @@ a collection of implementation of data structures and algorithms for general app
 - [ ] knapsack problem
 - [ ] longest common substring
 - [ ] longest common subsequence
+- [ ] longest increasing subsequence
 - [ ] text-justification (alternate approach)
 - [ ] subset sum problem
 - [ ] matrix-chain multiplication (re-study in detail as the concept is not entirely clear)

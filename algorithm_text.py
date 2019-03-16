@@ -181,5 +181,8 @@ def levenshtein_distance():
 def text_justification():
     """
     ref: https://www.youtube.com/watch?v=ENyox7kNKeY
+         https://www.youtube.com/watch?v=ENyox7kNKeY
+    recurrence_relation: dp(i) = min([ dp(j) + badness(i, j) for j in range(i+1,n+1) ])
+    base_case dp(n) = 0 {i.e. there are 0 words onwards after n words}
     """
     pass
