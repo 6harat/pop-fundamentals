@@ -106,14 +106,7 @@ class BKTree(object):
     ref: https://www.geeksforgeeks.org/bk-tree-introduction-implementation/
     """
     pass
-
-class Treap(object):
-    """
-    ref: https://www.geeksforgeeks.org/treap-a-randomized-binary-search-tree/
-         https://www.geeksforgeeks.org/treap-set-2-implementation-of-search-insert-and-delete/
-    """
-    pass
-
+    
 class LCRSTree(object):
     """
     left-child right-sibling tree - a representation of k-ary tree as a binary tree.

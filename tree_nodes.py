@@ -1,9 +1,10 @@
 class BinaryNode(object):
-    def __init__(self, key, left=None, right=None, record=None):
+    def __init__(self, key, left=None, right=None, record=None, height=None):
         self.key = key
         self.record = record
         self.left = left
         self.right = right
+        self.height = height
 
     def __eq__(self, that):
         return bool(that) and self.key == that.key
@@ -19,10 +20,11 @@ class BinaryNode(object):
         return self.__gt__(that) or self.__eq__(that)
         
     def __repr__(self):
-        return 'BinaryNode(key={key}, left={left}, right={right})'.format(
+        return 'BinaryNode(key={key}, left={left}, right={right}, height={height})'.format(
             key=self.key,
             left=self.left.key if self.left else None,
-            right=self.right.key if self.right else None
+            right=self.right.key if self.right else None,
+            height=self.height
         )
 
 class BinomialNode(object):
@@ -79,7 +81,7 @@ class MultiwayNode(object):
         return 0 if vals is None else len(vals)
 
     def _validate(self):
-        if self._num_key + 1 > self.degree:
+        if self._num_entry + 1 > self.degree:
             raise ValueError('num_entry {} for a node of {} degree can be at most {}'.format(
                 self._num_entry,
                 self.degree,

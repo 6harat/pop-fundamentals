@@ -125,8 +125,8 @@ class StandardTraversal(object):
         if root is None:
             return []
         opt = [root.key]
-        opt.extend(StandardTraversal.pre_order_traversal(root.left))
-        opt.extend(StandardTraversal.pre_order_traversal(root.right))
+        opt.extend(StandardTraversal.pre_order_traversal_recursive(root.left))
+        opt.extend(StandardTraversal.pre_order_traversal_recursive(root.right))
         return opt
     
     @staticmethod

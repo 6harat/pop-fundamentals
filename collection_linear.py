@@ -120,6 +120,12 @@ class Deque(object):
 class CircularQueue(object):
     pass
 
+class MichaelScottNonBlockingQueue(object):
+    """
+    ref: michael_scott_non_blocking_queue - http://www.cs.rochester.edu/~scott/papers/1996_PODC_queues.pdf
+    """
+    pass
+
 class LinkedList(object):
     """
     ref: https://www.geeksforgeeks.org/detect-and-remove-loop-in-a-linked-list/
@@ -142,12 +148,12 @@ class DoublyCircularLinkedList(object):
     pass
 
 class UnrolledLinkedList(object):
+    """
+    ref: https://www.geeksforgeeks.org/unrolled-linked-list-set-1-introduction/
+    """
     pass
 
 class BiotonicList(object):
-    pass
-
-class SkipList(object):
     pass
 
 class SuffixArray(object):

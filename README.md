@@ -31,13 +31,16 @@ a collection of implementation of data structures and algorithms for general app
 - [ ] computer_language_engineering: https://www.youtube.com/watch?v=k-bpyDgBxAo&list=PL0300FE43396456C1
 
 # todo:
-- for each completely coded data structure and algorithm determine the time/space complexity.
+- [ ] for each completely coded data structure and algorithm determine the time/space complexity.
+- [ ] cover all the data structures present here: https://en.wikipedia.org/wiki/Category:Data_structures
+- [ ] cover all the data types present here: https://en.wikipedia.org/wiki/Category:Data_types
 
 # backlog:
 - https://www.geeksforgeeks.org/how-to-prepare-for-acm-icpc/
 - https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/
 - https://www.geeksforgeeks.org/advanced-data-structures/
 - https://www.geeksforgeeks.org/persistent-data-structures/
+- http://jeffe.cs.illinois.edu/teaching/algorithms/
 
 # in the queue:
 - [ ] rabin_karp
@@ -60,6 +63,13 @@ a collection of implementation of data structures and algorithms for general app
 - [ ] coin-changing problem
 - [ ] coin-changing num ways to get total
 - [ ] cutting-rod profit maximization
+- [ ] word-break problem
+- [ ] minimum jumps to reach end
+- [ ] box-stacking problem
+- [ ] staircase problem
+- [ ] minimum cost path
+- [ ] palindrome partitioning
+- [ ] skip list
 
 # space-time complexity of algo_data_strucutres:
 

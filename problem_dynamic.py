@@ -74,7 +74,7 @@ def longest_common_subsequence():
     """
     pass
 
-arr = [3, 4, -1, 0, 6, 2, 3]
+lis_arr = [3, 4, -1, 0, 6, 2, 3]
 def longest_increasing_subsequence(arr):
     """
     ref: https://www.youtube.com/watch?v=CE2b_-XfVDk
@@ -153,5 +153,66 @@ def cutting_rod_problem():
 def cutting_rod_problem_efficient():
     """
     ref: https://www.youtube.com/watch?v=IRwVmTmN6go
+    """
+    pass
+
+def word_break_problem():
+    """
+    ref: https://www.youtube.com/watch?v=WepWFGxiwRs
+    """
+    pass
+
+mje_arr = [2, 3, 1, 1, 2, 4, 2, 0, 1, 1]
+def minimum_jumps_to_reach_end(arr):
+    """
+    ref: https://www.youtube.com/watch?v=cETfFsSTGJI
+    handle edge cases where arr: [0, ...] or [1, 0, ...] in which case it will be impossible
+    """
+    larr = len(arr)
+    jump_arr = [None]*larr
+    indx_arr = [None]*larr
+    j, i = 0, 1
+    jump_arr[0] = 0 # initialize base case
+    while i < larr:
+        if j + arr[j] >= i and (jump_arr[i] is None or jump_arr[j]+1 < jump_arr[i]) :
+            jump_arr[i] = jump_arr[j]+1
+            indx_arr[i] = j
+        j += 1
+        if i == j:
+            i += 1
+            j = 0
+    # change the below code to return the proper indices rather than indx_arr
+    return (jump_arr[-1], indx_arr)
+
+def box_stacking_problem():
+    """
+    ref: https://www.youtube.com/watch?v=9mod_xRB-O0
+    """
+    pass
+
+def staircase_problem():
+    """
+    ref: https://www.youtube.com/watch?v=CFQk7OQO_xM
+    recursion relation is: 
+        F(n) = F(n-1) + F(n-2)          , if you can take 1 or 2 steps at a time
+        F(n) = F(n-1) + F(n-2) + F(n-3) , if you can take 1, 2 or 3 steps at a time
+    """
+    pass
+
+def minimum_cost_path():
+    """
+    ref: https://www.youtube.com/watch?v=lBRtnuxg-gU
+    arr = [
+        [1, 3, 5, 8],
+        [4, 2, 1, 7],
+        [4, 3, 2, 3]
+    ]
+    opt = 12
+    """
+    pass
+
+def palindrome_partitioning():
+    """
+    ref: https://www.youtube.com/watch?v=lDYIvtBVmgo
     """
     pass

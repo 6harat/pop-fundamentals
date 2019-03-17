@@ -16,6 +16,7 @@ class SegmentTree(object):
          https://www.youtube.com/watch?v=ZBHKZF5w4YU
 
          advanced_topics:
+            https://codeforces.com/blog/entry/12285
             https://www.geeksforgeeks.org/lazy-propagation-in-segment-tree/
             https://www.geeksforgeeks.org/range-update-query-chessboard-pieces/
             https://www.geeksforgeeks.org/reconstructing-segment-tree/
