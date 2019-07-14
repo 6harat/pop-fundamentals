@@ -28,3 +28,9 @@ def booth():
     ref: https://www.geeksforgeeks.org/computer-organization-booths-algorithm/
     """
     pass
+
+def fast_inverse_square_root():
+	"""
+	ref: https://www.geeksforgeeks.org/fast-inverse-square-root/
+	"""
+	pass

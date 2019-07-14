@@ -318,7 +318,36 @@ class NearlySorted(object):
     pass
 
 class ExternalSort(object):
-    pass
+	"""
+	ref: https://en.wikipedia.org/wiki/External_sorting
+		 https://en.wikipedia.org/wiki/External_memory_algorithm
+		 https://en.wikipedia.org/wiki/Median_of_medians
+		 https://www.geeksforgeeks.org/external-sorting/
+		 https://www.geeksforgeeks.org/merge-k-sorted-linked-lists/
+		 https://www.geeksforgeeks.org/merge-k-sorted-arrays-set-2-different-sized-arrays/
+		 https://stackoverflow.com/questions/20802396/how-external-merge-sort-algorithm-works
+		 https://opendsa-server.cs.vt.edu/ODSA/Books/CS3/html/ExternalSort.html
+		 http://www.csbio.unc.edu/mcmillan/Media/Comp521F10Lecture17.pdf
+		 http://web.eecs.utk.edu/~bvz/cs302/notes/replacement_selection.html
+		 https://stackoverflow.com/questions/16326689/replacement-selection-sort-v-selection-sort
+		 https://en.wikipedia.org/wiki/In-place_algorithm
+		 http://www.gvpcew.ac.in/LN-CSE-IT-22-32/CSE-IT/2-Year/22-ADS/ADS-AUK-UNIT-1.pdf
+	"""
+	@staticmethod
+	def kway_merge_sort():
+		pass
+	
+	@staticmethod
+	def merge_sort():
+		pass
+
+	@staticmethod
+	def distribution_sort():
+		pass
+
+	@staticmethod
+	def replacemnet_sort():
+		pass
 
 class QuantumSort(object):
     pass
