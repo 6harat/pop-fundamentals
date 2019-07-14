@@ -181,8 +181,21 @@ def levenshtein_distance():
 def text_justification():
     """
     ref: https://www.youtube.com/watch?v=ENyox7kNKeY
-         https://www.youtube.com/watch?v=ENyox7kNKeY
+         https://www.youtube.com/watch?v=RORuwHiblPc
     recurrence_relation: dp(i) = min([ dp(j) + badness(i, j) for j in range(i+1,n+1) ])
     base_case dp(n) = 0 {i.e. there are 0 words onwards after n words}
     """
     pass
+
+def regex():
+	"""
+	ref: https://www.youtube.com/watch?v=l3hda49XcDE&index=17
+	"""
+	pass
+
+def wildcard_matching():
+    """
+    ref: https://www.youtube.com/watch?v=3ZDZ-N0EPV0&index=24
+    """
+    pass
+

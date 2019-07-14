@@ -5,6 +5,7 @@ a collection of implementation of data structures and algorithms for general app
 - complete list of data structures: https://en.wikipedia.org/wiki/List_of_data_structures
 
 # theory:
+- [ ] advanced_algorithms: https://www.youtube.com/watch?v=0JUN9aDxVmI
 - [ ] algorithm_design_and_analysis: http://web.cs.ucdavis.edu/~gusfield/cs122f10/videolist.html
 - [ ] intro_to_computer_science:
     https://www.youtube.com/watch?v=k6U-i4gXkLM&list=PL4C4720A6F225E074
@@ -29,6 +30,7 @@ a collection of implementation of data structures and algorithms for general app
 - [ ] information_and_entropy: https://www.youtube.com/watch?v=phxsQrZQupo&list=PLDDE03B3BDCA1D9B1
 - [ ] computer_system_engineering: https://www.youtube.com/watch?v=zm2VP0kHl1M&list=PL6535748F59DCA484
 - [ ] computer_language_engineering: https://www.youtube.com/watch?v=k-bpyDgBxAo&list=PL0300FE43396456C1
+- [ ] python algo lib: https://pypi.org/project/algorithms/
 
 # todo:
 - [ ] for each completely coded data structure and algorithm determine the time/space complexity.
@@ -41,6 +43,7 @@ a collection of implementation of data structures and algorithms for general app
 - https://www.geeksforgeeks.org/advanced-data-structures/
 - https://www.geeksforgeeks.org/persistent-data-structures/
 - http://jeffe.cs.illinois.edu/teaching/algorithms/
+- https://medium.com/basecs/tagged/data-structures
 
 # in the queue:
 - [ ] rabin_karp
@@ -70,6 +73,7 @@ a collection of implementation of data structures and algorithms for general app
 - [ ] minimum cost path
 - [ ] palindrome partitioning
 - [ ] skip list
+- [ ] articulation_point
 
 # space-time complexity of algo_data_strucutres:
 
@@ -80,3 +84,11 @@ linkded_list
 hash_map
 stack
 queue
+
+
+# problem_todo:
+- [ ] k-closest points to origin: https://www.youtube.com/watch?v=eaYX0Ee0Kcg
+- [ ] universal value tree problem: https://www.youtube.com/watch?v=7HgsS8bRvjo
+- [ ] ways to decode message: https://www.youtube.com/watch?v=qli-JCrSwuk
+- [ ] recursive staircase problem: https://www.youtube.com/watch?v=5o-kdjv7FD0
+- [ ] find set of numbers that add upto N: https://www.youtube.com/watch?v=nqlNzOcnCfs

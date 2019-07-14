@@ -5,6 +5,7 @@ ref: https://en.wikipedia.org/wiki/Category:Probabilistic_data_structures
 class BloomFilter(object):
     """
     ref: https://en.wikipedia.org/wiki/Bloom_filter
+         https://www.geeksforgeeks.org/bloom-filters-introduction-and-python-implementation/
     """
     pass
 
@@ -83,8 +84,15 @@ class SkipList(object):
          https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/skiplists.pdf
          https://opendatastructures.org/ods-java/4_4_Analysis_Skiplists.html
          https://en.wikipedia.org/wiki/Skip_list
+         skip_list_chapter - https://www.ics.uci.edu/~pattis/ICS-23/lectures/notes/Skip%20Lists.pdf
+         https://www.youtube.com/watch?v=2g9OSRKJuzM
     adv: https://codeforces.com/blog/entry/13218
     etc: https://stackoverflow.com/questions/256511/skip-list-vs-binary-search-tree
+
+    java_impl:
+        https://stackoverflow.com/a/1904598/6687477
+        https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentSkipListMap.html
+        https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ConcurrentSkipListSet.html
     """
     pass
 

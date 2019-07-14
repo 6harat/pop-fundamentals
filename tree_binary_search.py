@@ -189,6 +189,12 @@ class StandardTraversal(object):
                 stack.append(last_node.right)
         return opt[::-1]
 
+class ThreadedBinaryTree(object):
+    """
+    ref: https://www.geeksforgeeks.org/threaded-binary-tree-insertion/
+    """
+    pass
+    
 class ThreadedTraversal(object):
     """
     traverses a tree without the need of additional storage or recursion
@@ -369,3 +375,14 @@ class TraversalSequenceEvaluator(object):
     identifies if the traversal sequence are of the same tree
     """
     pass
+
+class Trivial:
+    """
+    additional algorithms that work on binary search tree
+    """
+    @staticmethod
+    def optimal_binary_search_tree():
+        """
+        ref: https://www.youtube.com/watch?v=hgA4xxlVvfQ
+        """
+        pass
