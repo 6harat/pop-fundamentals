@@ -17,8 +17,9 @@ def divisibility_by_3(num_string):
         fill_up = (fill_up - i)%3
     return fill_up == 0
 
-def deterministic_finite_automaton():
+def divisibility_by_k():
     """
+    aka: deterministic_finite_automator, dfa
     ref: https://www.geeksforgeeks.org/dfa-based-division/
     """
     pass

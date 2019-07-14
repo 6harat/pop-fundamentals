@@ -153,7 +153,7 @@ class UnrolledLinkedList(object):
     """
     pass
 
-class BiotonicList(object):
+class BiotonicLinkedList(object):
     pass
 
 class SuffixArray(object):

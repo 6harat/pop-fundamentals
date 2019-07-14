@@ -16,14 +16,19 @@ ref: https://www.youtube.com/watch?v=OQ5jsbhAv_M
      https://www.youtube.com/watch?v=ENyox7kNKeY
      https://www.youtube.com/watch?v=ocZMDMZwhCY
      https://www.youtube.com/watch?v=tp4_UXaVyx8
-
+     
+adv: https://www.youtube.com/watch?v=krZI60lKPek
 also read more theory about parent pointers in detail which helps us
 get the path to follow to get the optimized solution.
 """
 
+def fibonacci():
+    """
+    ref: https://www.youtube.com/watch?v=OQ5jsbhAv_M
+    """
+    pass
 
 arr = [6, 7, 1, 3, 8, 2, 4]
-
 def max_sum_with_no_consecutive_elements(arr):
     """
     aka: stickler thief problem
@@ -53,6 +58,7 @@ def egg_dropping_problem(num_eggs, num_floors):
 def knapsack_problem():
     """
     ref: https://www.youtube.com/watch?v=8LusJS5-AGo
+         https://www.youtube.com/watch?v=ocZMDMZwhCY
     """
     pass
 
@@ -214,5 +220,44 @@ def minimum_cost_path():
 def palindrome_partitioning():
     """
     ref: https://www.youtube.com/watch?v=lDYIvtBVmgo
+    """
+    pass
+
+def number_of_ways_to_traverse_matrix():
+    """
+    ref: https://www.youtube.com/watch?v=krZI60lKPek
+    given a matrix and the starting point as (0,0) and right, up being the possible directions,
+    find out the number of ways in which the point (m, n) can be reached
+    x   x   x   x   m,n         1   7   28  84  210
+    x   x   x   x   x           1   6   21  56  126
+    x   x   x   x   x           1   5   15  35  70
+    x   x   x   x   x     =>    1   4   10  20  35
+    x   x   x   x   x           1   3   6   10  15
+    x   x   x   x   x           1   2   3   4   5
+    0,0 x   x   x   x           0   1   1   1   1
+
+    opt = 210
+    """
+    pass
+
+def number_of_inversions_for_adjacent_swaps():
+    """
+    ref: https://www.youtube.com/watch?v=Vj5IOD7A6f8
+         for count the optimal algo takes O(n*log n) time
+         for enumeration the optimal algo takes O(n*n) time
+    """
+    pass
+
+
+def weighted_job_scheduling_problem():
+    """
+    ref: https://www.youtube.com/watch?v=cr6Ip0J9izc
+    """
+    pass
+
+def find_list_of_possible_words_from_letter_in_matrix():
+    """
+    aka: boggle_solver
+    ref: https://stackoverflow.com/questions/746082/how-to-find-list-of-possible-words-from-a-letter-matrix-boggle-solver
     """
     pass
