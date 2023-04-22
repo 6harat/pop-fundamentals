@@ -1,11 +1,11 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
 class Node:
     data: int
-    left: 'Node'
-    right: 'Node'
+    left: 'Node' = field(repr=False)
+    right: 'Node' = field(repr=False)
 
 
 class BstUtils:
@@ -48,30 +48,6 @@ class BstUtils:
                     return root
                 tmp = tmp.right
 
-    def size(root: Node) -> int:
-        if root is None:
-            return 0
-        return 1 + BstUtils.size(root.left) + BstUtils.size(root.right)
-
-    def height(root: Node) -> int:
-        if root is None:
-            return 0
-        return 1 + max(BstUtils.height(root.left), BstUtils.height(root.right))
-    
-    def is_bst(root: Node, low: int, high: int) -> bool:
-        if root is None:
-            return True
-        if low is not None and root.data < low:
-            return False
-        if high is not None and root.data >= high:
-            return False
-        if root.left is not None and root.left.data >= root.data:
-            return False
-        if root.right is not None and root.right.data < root.data:
-            return False
-        return BstUtils.is_bst(root.left, low, root.data) and BstUtils.is_bst(
-            root.right, root.data, high)
-    
     def lca(root: Node, a: int, b: int) -> int:
         if root is None:
             return root

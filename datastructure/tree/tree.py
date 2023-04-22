@@ -1,6 +1,6 @@
 from dataclasses import dataclass, field
 from collections import deque
-from typing import List
+from typing import List, Tuple
 
 
 @dataclass
@@ -221,3 +221,44 @@ class TreeUtils:
                 return lpar
             lpar = apar.data
         return lpar
+
+    def size(root: Node) -> int:
+        if root is None:
+            return 0
+        return 1 + TreeUtils.size(root.left) + TreeUtils.size(root.right)
+
+    def height(root: Node) -> int:
+        if root is None:
+            return 0
+        return 1 + max(TreeUtils.height(root.left), TreeUtils.height(root.right))
+
+    def is_bst(root: Node, low: int, high: int) -> bool:
+        if root is None:
+            return True
+        if low is not None and root.data < low:
+            return False
+        if high is not None and root.data >= high:
+            return False
+        if root.left is not None and root.left.data >= root.data:
+            return False
+        if root.right is not None and root.right.data < root.data:
+            return False
+        return TreeUtils.is_bst(root.left, low, root.data) and TreeUtils.is_bst(
+            root.right, root.data, high)
+
+    def _value_range(root: Node):
+        if root == None:
+            return (True, 0, None, None)
+        lsmry = TreeUtils._value_range(root.left)
+        rsmry = TreeUtils._value_range(root.right)
+        if not lsmry[0] or not rsmry[0]:
+            return (False, max(lsmry[1], rsmry[1]))
+        if (lsmry[3] is None or lsmry[3] < root.data) and (
+            rsmry[2] is None or root.data <= rsmry[2]):
+            return (True, 1+lsmry[1]+rsmry[1],
+                root.data if lsmry[2] is None else lsmry[2],
+                root.data if rsmry[3] is None else rsmry[3])
+        return (False, max(lsmry[1], rsmry[1]), None, None)
+
+    def largest_bst(root: Node) -> int:
+        return TreeUtils._value_range(root)[1]

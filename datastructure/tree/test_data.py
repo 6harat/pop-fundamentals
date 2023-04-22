@@ -1,11 +1,11 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 
 
 @dataclass
 class Node:
     data: int
-    left: 'Node'
-    right: 'Node'
+    left: 'Node' = field(repr=False)
+    right: 'Node' = field(repr=False)
 
 tree1 = Node(
     10, 
@@ -105,6 +105,40 @@ tree5 = Node(
             7,
             None,
             Node(10, None, None),
+        )
+    )
+)
+
+tree6 = Node(
+    25,
+    Node(
+        18,
+        Node(
+            19,
+            None,
+            Node(15, None, None)
+        ),
+        Node(
+            20,
+            Node(18, None, None),
+            Node(24, None, None)
+        )
+    ),
+    Node(
+        50,
+        Node(
+            35,
+            Node(
+                20,
+                None,
+                Node(25, None, None)
+            ),
+            Node(40, None, None)
+        ),
+        Node(
+            60,
+            Node(55, None, None),
+            Node(70, None, None)
         )
     )
 )
