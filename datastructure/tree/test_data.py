@@ -103,8 +103,8 @@ tree5 = Node(
         Node(6, None, None),
         Node(
             7,
+            None,
             Node(10, None, None),
-            None
         )
     )
 )
