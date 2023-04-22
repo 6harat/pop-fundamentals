@@ -68,6 +68,24 @@ class TreeUtils:
                 curr = curr.right
         print(",".join(map(str, reversed(opstack))))
 
+    def postorder_iter1(root: Node):
+        curr = root
+        stack = []
+        while curr or stack:
+            if curr is None:
+                curr = stack.pop()
+                print(curr.data, end=",")
+                if stack:
+                    if curr == stack[-1].right or not stack[-1].right:
+                        curr = None
+                    else:
+                        curr = stack[-1].right
+                else:
+                    curr = None
+            else:
+                stack.append(curr)
+                curr = curr.left or curr.right or None
+
     def levelorder(root: Node):
         pass
 
