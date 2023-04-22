@@ -7,6 +7,7 @@ class Node:
     left: 'Node'
     right: 'Node'
 
+
 class BstUtils:
     def equals(rootA: Node, rootB: Node) -> bool:
         if rootA is None and rootB is None:

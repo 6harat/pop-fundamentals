@@ -43,6 +43,72 @@ tree2 = Node(
     )
 )
 
+tree3 = Node(
+    10,
+    Node(
+        9,
+        Node(
+            11,
+            None,
+            Node(15, None, None)
+        ),
+        None
+    ),
+    Node(
+        -10,
+        Node(
+            16,
+            Node(18, None, None),
+            None
+        ),
+        Node(
+            21,
+            None,
+            Node(19, None, None)
+        )
+    )
+)
+
+tree4 = Node(
+    1,
+    Node(
+        -1,
+        Node(-2, None, None),
+        Node(
+            -3,
+            None,
+            Node(5, None, None)
+        )
+    ),
+    Node(
+        11,
+        Node(21, None, None),
+        Node(6, None, None)
+    )
+)
+
+tree5 = Node(
+    1,
+    Node(
+        2,
+        Node(4, None, None),
+        Node(
+            5,
+            Node(8, None, None),
+            Node(9, None, None)
+        )
+    ),
+    Node(
+        3,
+        Node(6, None, None),
+        Node(
+            7,
+            Node(10, None, None),
+            None
+        )
+    )
+)
+
 bst1 = Node(
     10, 
     Node(
