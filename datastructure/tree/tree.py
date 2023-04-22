@@ -47,7 +47,25 @@ class TreeUtils:
             else:
                 stack.append(curr)
                 curr = curr.left
-    
+
+    def inorder_morris(root: Node):
+        curr = root
+        while curr:
+            if curr.left is None:
+                print(curr.data, end=",")
+                curr = curr.right
+            else:
+                pcurr = curr.left
+                while not(pcurr.right is None or pcurr.right == curr):
+                    pcurr = pcurr.right
+                if pcurr.right is None:
+                    pcurr.right = curr
+                    curr = curr.left
+                else:
+                    pcurr.right = None
+                    print(curr.data, end=",")
+                    curr = curr.right
+
     def postorder(root: Node):
         if root is None:
             return

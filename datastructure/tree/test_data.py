@@ -143,6 +143,32 @@ tree6 = Node(
     )
 )
 
+tree7 = Node(
+    10,
+    Node(
+        5,
+        Node(
+            -2,
+            None,
+            Node(
+                2,
+                Node(-1, None, None),
+                None
+            )
+        ),
+        Node(
+            6,
+            None,
+            Node(8, None, None)
+        )
+    ),
+    Node(
+        30,
+        None,
+        Node(40, None, None)
+    )
+)
+
 bst1 = Node(
     10, 
     Node(
