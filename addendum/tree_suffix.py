@@ -40,3 +40,23 @@ class UkkonenTree(object):
      + trick 3: global end for leaves
     """
     pass
+
+
+class EulerTourTree(object):
+    """
+    ref: https://www.geeksforgeeks.org/euler-tour-subtree-sum-using-segment-tree/
+    """
+    pass
+
+class IntervalTree(object):
+    """
+    a type of segment tree which holds intervals
+    ref: https://www.geeksforgeeks.org/interval-tree/
+    """
+    pass
+
+class PersistentSegmentTree(object):
+    """
+    ref: https://www.geeksforgeeks.org/persistent-segment-tree-set-1-introduction/
+    """
+    pass
