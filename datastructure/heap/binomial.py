@@ -34,8 +34,7 @@ class BinomialHeap:
 
         self._dettach_parent(node.lchild)
         self._head = self._union_heaps(node.lchild, self._head)
-        node.lchild = None
-        node.sibling = None
+        node.lchild = node.sibling = None
         return node.data
 
     def peek(self) -> int:
@@ -87,9 +86,9 @@ class BinomialHeap:
         else:
             mcurr.sibling = ahead
         
-        return self._heapify(mhead)
+        return self._concatentate(mhead)
 
-    def _heapify(self, head) -> Node:
+    def _concatentate(self, head: Node) -> Node:
         ohead = head
         prev, curr, next = None, head, head.sibling
         while curr is not None and next is not None:
@@ -119,21 +118,23 @@ class BinomialHeap:
             self._attach_child(pnode, node)
             return pnode
 
-    def _attach_child(self, pnode, cnode) -> None:
+    def _attach_child(self, pnode: Node, cnode: Node) -> None:
         pnode.degree += 1
         cnode.parent = pnode
         if pnode.lchild is None:
             pnode.lchild = cnode
         else:
             snode = pnode.lchild
+            # TODO: always attach as left child to make push O(1) and reverse during union operation
             while snode.sibling is not None:
                 snode = snode.sibling
             snode.sibling = cnode
     
-    def _dettach_parent(self, node) -> None:
-        while node:
+    def _dettach_parent(self, node: Node) -> None:
+        while node is not None:
             node.parent = None
             node = node.sibling
+
 
 min_cmp = lambda a, b: 0 if a==b else -1 if a < b else 1
 max_cmp = lambda a, b: 0 if a==b else -1 if a > b else 1
