@@ -41,6 +41,12 @@ class BinomialHeap:
     def peek(self) -> int:
         _, node = self._find_min()
         return None if node is None else node.data
+
+    def decrease_key(self):
+        raise NotImplementedError
+
+    def delete_key(self):
+        raise NotImplementedError
     
     def _find_min(self) -> Tuple[Node, Node]:
         if self._head is None:
