@@ -9,17 +9,6 @@ class Node:
 
 
 class BstUtils:
-    def equals(rootA: Node, rootB: Node) -> bool:
-        if rootA is None and rootB is None:
-            return True
-        
-        if rootA is None or rootB is None:
-            return False
-        
-        return rootA.data == rootB.data and BstUtils.equals(
-            rootA.left, rootB.left) and BstUtils.equals(
-                rootA.right, rootB.right)
-    
     def search(root: Node, data: int) -> bool:
         while root:
             if data == root.data:
