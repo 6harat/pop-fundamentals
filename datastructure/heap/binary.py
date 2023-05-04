@@ -61,3 +61,6 @@ class BinaryHeap:
 
     def replace(self, data: int):
         pass
+
+min_cmp = lambda a, b: 0 if a==b else -1 if a < b else 1
+max_cmp = lambda a, b: 0 if a==b else -1 if a > b else 1
