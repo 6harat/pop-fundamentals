@@ -72,7 +72,7 @@ class FibonacciHeap:
         return bhead
     
     def _purge_node(self, node: Node) -> Node:
-        if node.psibling == node:
+        if node.psibling is node:
             return None
 
         prev = node.psibling
