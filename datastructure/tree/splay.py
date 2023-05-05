@@ -63,7 +63,7 @@ class SplayTreeUtils:
             return lroot
         if lroot is None:
             return rroot
-        lroot = SplayTreeUtils.search(lroot, SplayTreeUtils._pinf)
+        lroot, _ = SplayTreeUtils.search(lroot, SplayTreeUtils._pinf)
         lroot.right = rroot
         rroot.parent = lroot
         return lroot
@@ -123,3 +123,10 @@ class SplayTreeUtils:
         rnode.parent = node.parent
         node.parent = rnode
         return rnode
+
+snode = None
+snode = SplayTreeUtils.insert(snode, 3)
+snode = SplayTreeUtils.insert(snode, 34)
+snode = SplayTreeUtils.insert(snode, 2)
+snode = SplayTreeUtils.insert(snode, -9)
+snode = SplayTreeUtils.insert(snode, 89)
