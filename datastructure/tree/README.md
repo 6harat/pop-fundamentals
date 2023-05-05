@@ -13,3 +13,4 @@
 - t-tree
 - wavl tree
 - binomial tree
+- tango tree
