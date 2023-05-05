@@ -15,6 +15,5 @@
 - Skew heap
 - Soft heap
 - Ternary heap
-- Treap
 - Weak heap
 - relaxed heap
