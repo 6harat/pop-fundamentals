@@ -1,6 +1,15 @@
 def pythonCmd = "${rootDir}/venv/bin/python"
+def pipCmd = "${pythonCmd} -m pip"
 def yapfCmd = "${pythonCmd} -m yapf --style pep8 --recursive"
 
+task pyDeps {
+    doLast {
+        exec {
+            workingDir "${rootDir}"
+            commandLine "sh", "-c", "${pipCmd} install -r requirements.txt && ${pipCmd} install -e ${rootDir}"
+        }
+    }
+}
 
 task pyCheck {
     doLast {
@@ -9,6 +18,7 @@ task pyCheck {
             commandLine "sh", "-c", "${yapfCmd} -d ${projectDir}"
         }
     }
+    dependsOn("${project.path}:pyDeps")
 }
 
 task pyFormat {
@@ -18,4 +28,5 @@ task pyFormat {
             commandLine "sh", "-c", "${yapfCmd} -i ${projectDir}"
         }
     }
+    dependsOn("${project.path}:pyDeps")
 }

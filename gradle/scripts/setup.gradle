@@ -1,0 +1,19 @@
+// installing git hooks
+def gitHooksSourcePath = "${rootDir}/git_hooks"
+def gitHooksTargetPath = "${rootDir}/.git/hooks"
+fileTree(gitHooksSourcePath).filter {
+    it.isFile() && it.getName().endsWith(".sh")
+}.files.name.forEach {fileName ->
+    exec {
+        commandLine "ln", "-sf", "${gitHooksSourcePath}/${fileName}", "${gitHooksTargetPath}/${fileName.take(fileName.size()-3)}"
+    }
+}
+
+
+// installing python venv
+if (!file("${rootDir}/venv").exists()) {
+    exec {
+        workingDir "${rootDir}"
+        commandLine "sh", "-c", "${rootDir}/.devlinks/python -m venv venv"
+    }
+}

@@ -1,8 +1,0 @@
-// link git-hooks (runs irrespective of the tasks called on this project or any sub-projects)
-def gitHooksSourcePath = "${rootDir}/git_hooks"
-def gitHooksTargetPath = "${rootDir}/.git/hooks"
-fileTree(gitHooksSourcePath).filter { it.isFile() && it.getName().endsWith(".sh") }.files.name.forEach {fileName ->
-    exec {
-        commandLine "ln", "-sf", "${gitHooksSourcePath}/${fileName}", "${gitHooksTargetPath}/${fileName.take(fileName.size()-3)}"
-    }
-}

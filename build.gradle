@@ -1,1 +1,2 @@
-apply from: "${rootDir}/gradle/scripts/git.gradle"
+version = "0.0.1"
+apply from: "${rootDir}/gradle/scripts/setup.gradle"

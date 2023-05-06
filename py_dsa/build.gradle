@@ -1,1 +1,9 @@
 apply from: "${rootDir}/gradle/scripts/py.gradle"
+
+task check {
+    dependsOn("${project.path}:pyCheck")
+}
+
+task format {
+    dependsOn("${project.path}:pyCheck")
+}
