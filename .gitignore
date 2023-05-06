@@ -4,6 +4,7 @@
 **/.project
 **/.settings
 **/.DS_Store
+**/*.egg-info
 **/*.log
 **/archive-reports
 **/bin
@@ -17,4 +18,3 @@
 **/tmp
 **/venv
 **/__pycache__
-**/*.egg-info
