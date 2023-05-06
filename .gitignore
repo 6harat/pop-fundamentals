@@ -16,5 +16,6 @@
 **/logs
 **/out
 **/tmp
+**/vendor
 **/venv
 **/__pycache__
