@@ -1,6 +1,6 @@
 # pop-fundamentals:
 
-a collection of implementation of data structures, algorithms and problems for general applications
+a collection of implementation of algorithms, data structures and problems for general applications
 
 ## setup:
 in order to use this project create a directory named ".devlinks" in root dir of the repository along with similar such symlinks.
