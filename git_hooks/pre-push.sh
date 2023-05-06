@@ -5,7 +5,7 @@ init() {
     VALIDATION_FAILURES=0
     TOP_LEVEL_DIR="$(git rev-parse --show-toplevel)"
     DEV_LINKS=$TOP_LEVEL_DIR/.devlinks
-    GRADLE_CMD="JAVA_HOME=$DEV_LINKS/java_home $TOP_LEVEL_DIR/gradle"
+    GRADLE_CMD="$TOP_LEVEL_DIR/gradlew"
 }
 
 validate() {
