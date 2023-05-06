@@ -75,6 +75,10 @@ class Treap:
         return
 
     def delete(root: Node, data: int) -> Node:
+        # find the key using BST search
+        # mark its priority as worst
+        # rotate down till it becomes a leaf node
+        # delete
         pass
 
     def pop(root: Node) -> Node:
