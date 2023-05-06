@@ -28,7 +28,7 @@ class SparseTable:
         self._cols = cols
         self._index = index
 
-    def range_query(self, low, high):
+    def range_query_idx(self, low, high):
         if low > high or low >= self._rows:
             return None
         high = min(high, self._rows-1)
@@ -37,7 +37,13 @@ class SparseTable:
         row1, row2 = low, high+1-2**col
         idx1, idx2 = self._index[row1][col], self._index[row2][col]
         val1, val2 = self.values[idx1], self.values[idx2]
-        return self.func(val1, val2)
+        opt = self.func(val1, val2)
+        return idx1 if opt == val1 else idx2
+
+    def range_query(self, low, high):
+        idx = self.range_query_idx(low, high)
+        return None if idx is None else self.values[idx]
+
 
 @dataclass
 class SparseTableExt:
