@@ -5,5 +5,5 @@ task check {
 }
 
 task format {
-    dependsOn("${project.path}:pyCheck")
+    dependsOn("${project.path}:pyFormat")
 }
