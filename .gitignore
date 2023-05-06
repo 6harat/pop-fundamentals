@@ -1,4 +1,5 @@
 **/.classpath
+**/.devlinks
 **/.gradle
 **/.idea
 **/.project
@@ -6,6 +7,9 @@
 **/.DS_Store
 **/*.egg-info
 **/*.log
+
+**/gradle.properties
+
 **/archive-reports
 **/bin
 **/build
