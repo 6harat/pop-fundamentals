@@ -14,6 +14,7 @@ change the "/path/to/repo/" path in the following line in gradle.properties.
 ```
 org.gradle.java.home=/path/to/repo/.devlinks/java_home
 ```
+(ensure that you do not stage this file in subsequent commits, if any)
 
 and then execute
 ```
