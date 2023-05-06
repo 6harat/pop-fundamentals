@@ -1,0 +1,21 @@
+def pythonCmd = "${rootDir}/venv/bin/python"
+def yapfCmd = "${pythonCmd} -m yapf --style pep8 --recursive"
+
+
+task pyCheck {
+    doLast {
+        exec {
+            workingDir "${rootDir}"
+            commandLine "sh", "-c", "${yapfCmd} -d ${projectDir}"
+        }
+    }
+}
+
+task pyFormat {
+    doLast {
+        exec {
+            workingDir "${rootDir}"
+            commandLine "sh", "-c", "${yapfCmd} -i ${projectDir}"
+        }
+    }
+}
