@@ -8,6 +8,7 @@ class Node:
 
 
 class Stack:
+
     def __init__(self):
         self._head: Node = None
 
@@ -18,7 +19,7 @@ class Stack:
 
     def pop(self) -> int:
         if self._head is None:
-            return  None
+            return None
         node = self._head
         self._head = node.next
         return node.data

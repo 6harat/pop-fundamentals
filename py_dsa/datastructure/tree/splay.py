@@ -48,7 +48,7 @@ class SplayTreeUtils:
         nroot, found = SplayTreeUtils.search(root, data)
         if not found:
             return nroot, found
-        
+
         lnode = nroot.left
         rnode = nroot.right
         nroot.left = nroot.right = None
@@ -93,7 +93,7 @@ class SplayTreeUtils:
                 else:
                     SplayTreeUtils._zag(pnode)
         return node
-        
+
     def _zig(node: Node) -> Node:
         lnode = node.left
         if node.parent is not None:
@@ -108,7 +108,7 @@ class SplayTreeUtils:
         lnode.parent = node.parent
         node.parent = lnode
         return lnode
-    
+
     def _zag(node: Node) -> Node:
         rnode = node.right
         if node.parent is not None:
@@ -116,13 +116,14 @@ class SplayTreeUtils:
                 node.parent.left = rnode
             else:
                 node.parent.right = rnode
-        node.right  = rnode.left
+        node.right = rnode.left
         if node.right is not None:
             node.right.parent = node
         rnode.left = node
         rnode.parent = node.parent
         node.parent = rnode
         return rnode
+
 
 snode = None
 snode = SplayTreeUtils.insert(snode, 3)

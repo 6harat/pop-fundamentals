@@ -10,6 +10,7 @@ class Node:
 
 
 class AvlUtils:
+
     def _left_left_rotate(root: Node) -> Node:
         nroot = root.left
         root.left = nroot.right
@@ -25,7 +26,7 @@ class AvlUtils:
         nroot.left = root.left
         root.left = nroot.right
         nroot.right = root
-        
+
         nroot.left.height = AvlUtils.height(nroot.left)
         nroot.right.height = AvlUtils.height(nroot.right)
         nroot.height = AvlUtils.height(nroot)
@@ -46,7 +47,7 @@ class AvlUtils:
         nroot.right = root.right
         root.right = nroot.left
         nroot.left = root
-        
+
         nroot.left.height = AvlUtils.height(nroot.left)
         nroot.right.height = AvlUtils.height(nroot.right)
         nroot.height = AvlUtils.height(nroot)
@@ -57,14 +58,14 @@ class AvlUtils:
             return 0
         lheight = 0 if root.left is None else root.left.height
         rheight = 0 if root.right is None else root.right.height
-        return 1+max(lheight, rheight)
+        return 1 + max(lheight, rheight)
 
     def _balance(root: Node) -> Node:
         lheight = AvlUtils.height(root.left)
         rheight = AvlUtils.height(root.right)
-        if abs(lheight-rheight) < 2:
+        if abs(lheight - rheight) < 2:
             return root
-        
+
         if lheight > rheight:
             llheight = AvlUtils.height(root.left.left)
             lrheight = AvlUtils.height(root.left.right)
@@ -84,7 +85,7 @@ class AvlUtils:
         n = Node(data, None, None, 1)
         if root is None:
             return n
-        
+
         if data < root.data:
             root.left = AvlUtils.insert(root.left, data)
         else:
@@ -92,6 +93,7 @@ class AvlUtils:
 
         root.height = AvlUtils.height(root)
         return AvlUtils._balance(root)
+
 
 avl1 = None
 for data in [1, 2, 3, 6, 5, -2, -5, -8]:

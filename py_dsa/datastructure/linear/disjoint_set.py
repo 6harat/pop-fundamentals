@@ -1,11 +1,13 @@
 from dataclasses import dataclass
 from typing import List
 
+
 @dataclass
 class Node:
     data: str
     parent: int
     rank: int
+
 
 @dataclass
 class DisjointSet:
@@ -14,7 +16,7 @@ class DisjointSet:
     def __post_init__(self):
         bijection = dict()
         ctr = len(self.values)
-        association = [None]*ctr
+        association = [None] * ctr
         for idx in range(ctr):
             val = self.values[idx]
             bijection[val] = idx
@@ -38,8 +40,8 @@ class DisjointSet:
         if node1.rank < node2.rank:
             node1.parent = pctr2
             return
-        
-        if node1.rank == node2.rank: # increment only if ranks were same
+
+        if node1.rank == node2.rank:  # increment only if ranks were same
             node1.rank += 1
         node2.parent = pctr1
 
@@ -49,7 +51,7 @@ class DisjointSet:
             return None
         pctr = self._find_set_with_compression(ctr)
         return self._association[pctr].data
-    
+
     def _find_set_with_compression(self, ctr: int) -> int:
         node = self._association[ctr]
         if ctr == node.parent:
@@ -63,4 +65,6 @@ class DisjointSet:
         self._association.append(Node(self._ctr, 0))
         self._ctr += 1
 
-ds = DisjointSet(["hello", "world", "foo", "bar", "roger", "that", "fog", "light"])
+
+ds = DisjointSet(
+    ["hello", "world", "foo", "bar", "roger", "that", "fog", "light"])

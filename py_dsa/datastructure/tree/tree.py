@@ -11,6 +11,7 @@ class Node:
 
 
 class TreeUtils:
+
     def equals(rootA: Node, rootB: Node) -> bool:
         if rootA is None and rootB is None:
             return True
@@ -28,7 +29,7 @@ class TreeUtils:
         print(root.data, end=",")
         TreeUtils.preorder(root.left)
         TreeUtils.preorder(root.right)
-    
+
     def preorder_iter(root: Node):
         curr = root
         stack = []
@@ -48,7 +49,7 @@ class TreeUtils:
                 curr = curr.right
             else:
                 pcurr = curr.left
-                while not(pcurr.right is None or pcurr.right == curr):
+                while not (pcurr.right is None or pcurr.right == curr):
                     pcurr = pcurr.right
                 if pcurr.right is None:
                     print(curr.data, end=",")
@@ -57,14 +58,14 @@ class TreeUtils:
                 else:
                     pcurr.right = None
                     curr = curr.right
-    
+
     def inorder(root: Node):
         if root is None:
             return
         TreeUtils.inorder(root.left)
         print(root.data, end=",")
         TreeUtils.inorder(root.right)
-    
+
     def inorder_iter(root: Node):
         curr = root
         stack = []
@@ -85,7 +86,7 @@ class TreeUtils:
                 curr = curr.right
             else:
                 pcurr = curr.left
-                while not(pcurr.right is None or pcurr.right == curr):
+                while not (pcurr.right is None or pcurr.right == curr):
                     pcurr = pcurr.right
                 if pcurr.right is None:
                     pcurr.right = curr
@@ -101,7 +102,7 @@ class TreeUtils:
         TreeUtils.postorder(root.left)
         TreeUtils.postorder(root.right)
         print(root.data, end=",")
-    
+
     def postorder_iter(root: Node):
         curr = root
         stack = []
@@ -145,7 +146,7 @@ class TreeUtils:
             print(el.data, end=",")
             dq.append(el.left)
             dq.append(el.right)
-    
+
     def levelorder_iter_newline(root: Node):
         cutoff = object()
         dq = deque([root, cutoff])
@@ -161,7 +162,7 @@ class TreeUtils:
             print(el.data, end=",")
             dq.append(el.left)
             dq.append(el.right)
-    
+
     def reverse_levelorder_iter(root: Node):
         dq = deque([root])
         stack = []
@@ -201,12 +202,13 @@ class TreeUtils:
     def checksum(root: Node, hash: int) -> bool:
         if root is None:
             return False
-        
-        delta = hash-root.data
+
+        delta = hash - root.data
         if root.left is None and root.right is None:
             return delta == 0
-        
-        return TreeUtils.checksum(root.left, delta) or TreeUtils.checksum(root.right, delta)
+
+        return TreeUtils.checksum(root.left, delta) or TreeUtils.checksum(
+            root.right, delta)
 
     def search(root: Node, a: int) -> bool:
         curr = root
@@ -277,7 +279,8 @@ class TreeUtils:
     def height(root: Node) -> int:
         if root is None:
             return 0
-        return 1 + max(TreeUtils.height(root.left), TreeUtils.height(root.right))
+        return 1 + max(TreeUtils.height(root.left), TreeUtils.height(
+            root.right))
 
     def is_bst(root: Node, low: int, high: int) -> bool:
         if root is None:
@@ -290,8 +293,9 @@ class TreeUtils:
             return False
         if root.right is not None and root.right.data < root.data:
             return False
-        return TreeUtils.is_bst(root.left, low, root.data) and TreeUtils.is_bst(
-            root.right, root.data, high)
+        return TreeUtils.is_bst(root.left, low,
+                                root.data) and TreeUtils.is_bst(
+                                    root.right, root.data, high)
 
     def _value_range(root: Node):
         if root == None:
@@ -300,11 +304,11 @@ class TreeUtils:
         rsmry = TreeUtils._value_range(root.right)
         if not lsmry[0] or not rsmry[0]:
             return (False, max(lsmry[1], rsmry[1]))
-        if (lsmry[3] is None or lsmry[3] < root.data) and (
-            rsmry[2] is None or root.data <= rsmry[2]):
-            return (True, 1+lsmry[1]+rsmry[1],
-                root.data if lsmry[2] is None else lsmry[2],
-                root.data if rsmry[3] is None else rsmry[3])
+        if (lsmry[3] is None or lsmry[3]
+                < root.data) and (rsmry[2] is None or root.data <= rsmry[2]):
+            return (True, 1 + lsmry[1] + rsmry[1],
+                    root.data if lsmry[2] is None else lsmry[2],
+                    root.data if rsmry[3] is None else rsmry[3])
         return (False, max(lsmry[1], rsmry[1]), None, None)
 
     def largest_bst(root: Node) -> int:

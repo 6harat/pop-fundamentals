@@ -16,7 +16,7 @@ class BinomialHeap:
     cmp: Callable[[int, int], int]
 
     def __post_init__(self) -> None:
-        self._head :Node = None
+        self._head: Node = None
 
     def push(self, data: int):
         node = Node(data, 0, None, None, None)
@@ -46,7 +46,7 @@ class BinomialHeap:
 
     def delete_key(self):
         raise NotImplementedError
-    
+
     def _find_min(self) -> Tuple[Node, Node]:
         if self._head is None:
             return None, None
@@ -80,19 +80,20 @@ class BinomialHeap:
                 mcurr.sibling = bhead
                 bhead = bhead.sibling
             mcurr = mcurr.sibling
-        
+
         if ahead is None:
             mcurr.sibling = bhead
         else:
             mcurr.sibling = ahead
-        
+
         return self._concatentate(mhead)
 
     def _concatentate(self, head: Node) -> Node:
         ohead = head
         prev, curr, next = None, head, head.sibling
         while curr is not None and next is not None:
-            if curr.degree == next.degree and (next.sibling is None or next.sibling.degree > curr.degree):
+            if curr.degree == next.degree and (
+                    next.sibling is None or next.sibling.degree > curr.degree):
                 curr = self._merge_nodes(curr)
                 if prev is None:
                     ohead = curr
@@ -129,15 +130,15 @@ class BinomialHeap:
             while snode.sibling is not None:
                 snode = snode.sibling
             snode.sibling = cnode
-    
+
     def _dettach_parent(self, node: Node) -> None:
         while node is not None:
             node.parent = None
             node = node.sibling
 
 
-min_cmp = lambda a, b: 0 if a==b else -1 if a < b else 1
-max_cmp = lambda a, b: 0 if a==b else -1 if a > b else 1
+min_cmp = lambda a, b: 0 if a == b else -1 if a < b else 1
+max_cmp = lambda a, b: 0 if a == b else -1 if a > b else 1
 
 bhmin = BinomialHeap(min_cmp)
 nums = [5, -1, 3, 5, 7, 8, 9, 4, 2]

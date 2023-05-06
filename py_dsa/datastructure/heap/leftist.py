@@ -4,6 +4,7 @@ from typing import Callable
 # height-biased
 # weight-biased
 
+
 @dataclass
 class Node:
     data: int
@@ -17,7 +18,7 @@ class LeftistHeap:
     cmp: Callable[[int, int], int]
 
     def __post_init__(self) -> None:
-        self._head :Node = None
+        self._head: Node = None
 
     def push(self, data: int) -> None:
         node = Node(data, 1, None, None)
@@ -64,8 +65,8 @@ class LeftistHeap:
         return phead
 
 
-min_cmp = lambda a, b: 0 if a==b else -1 if a < b else 1
-max_cmp = lambda a, b: 0 if a==b else -1 if a > b else 1
+min_cmp = lambda a, b: 0 if a == b else -1 if a < b else 1
+max_cmp = lambda a, b: 0 if a == b else -1 if a > b else 1
 
 lhmin = LeftistHeap(min_cmp)
 nums = [5, -1, 3, 5, 7, 8, 9, 4, 2]

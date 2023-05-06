@@ -9,6 +9,7 @@ class Node:
 
 
 class BstUtils:
+
     def search(root: Node, data: int) -> bool:
         while root:
             if data == root.data:
@@ -23,7 +24,7 @@ class BstUtils:
         n = Node(data, None, None)
         if root is None:
             return n
-        
+
         tmp = root
         while True:
             if data < tmp.data:

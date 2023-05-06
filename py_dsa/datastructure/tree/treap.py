@@ -18,9 +18,10 @@ class Treap:
     priority_range: Tuple[int, int]
 
     def __post_init__(self):
-        self._root :Node = None
+        self._root: Node = None
         self._random = random.Random(23)
-        self._generate_priority = lambda: self._random.randint(*self.priority_range)
+        self._generate_priority = lambda: self._random.randint(*self.
+                                                               priority_range)
 
     def search(self, data: int) -> bool:
         curr = self._root
@@ -37,7 +38,7 @@ class Treap:
     def insert(self, data: int) -> None:
         curr = self._root
         node = Node(data, self._generate_priority(), None, None)
-        stack :Deque[Node] = deque()
+        stack: Deque[Node] = deque()
         while curr is not None:
             stack.append(curr)
             if data < curr.data:
@@ -52,7 +53,8 @@ class Treap:
                 curr = curr.right
         stack.append(node)
         cnode = stack.pop()
-        while stack and self.priority_cmp(cnode.priority, stack[-1].priority) < 0:
+        while stack and self.priority_cmp(cnode.priority,
+                                          stack[-1].priority) < 0:
             pnode = stack.pop()
             if cnode.data < pnode.data:
                 pnode.left = cnode.right
@@ -88,8 +90,8 @@ class Treap:
         pass
 
 
-min_cmp = lambda a, b: 0 if a==b else -1 if a < b else 1
-max_cmp = lambda a, b: 0 if a==b else -1 if a > b else 1
+min_cmp = lambda a, b: 0 if a == b else -1 if a < b else 1
+max_cmp = lambda a, b: 0 if a == b else -1 if a > b else 1
 tr = Treap(min_cmp, (0, 100))
 nums = [5, -1, 3, 5, 7, 8, 9, 4, 2]
 for n in nums:

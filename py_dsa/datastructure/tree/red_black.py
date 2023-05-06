@@ -14,9 +14,11 @@ from turtle import color
 #        if no/black sibling => rotate and recolor
 #        if red sibling => recolor (sibling=> black, parent=>red only if it is not root) => check again
 
+
 class Color(Enum):
     BLACK = 0
     RED = 1
+
 
 @dataclass
 class Node:
@@ -27,6 +29,7 @@ class Node:
 
 
 class RedBlackTreeUtils:
+
     def search(root: Node, data: int) -> bool:
         pass
 
@@ -94,7 +97,7 @@ class RedBlackTreeUtils:
     def _insert(root: Node, data: int) -> Node:
         if root is None:
             return Node(data, Color.BLACK, None, None)
-        
+
         if data < root.data:
             if root.left is None:
                 root.left = Node(data, Color.RED, None, None)
@@ -108,7 +111,7 @@ class RedBlackTreeUtils:
 
         RedBlackTreeUtils._balance(root)
         return root
-    
+
     def insert(root: Node, data: int) -> Node:
         root = RedBlackTreeUtils._insert(root, data)
         root.color = Color.BLACK
@@ -117,7 +120,7 @@ class RedBlackTreeUtils:
     # def insert_iter(root: Node, data: int) -> Node:
     #     if root is None:
     #         return Node(data, Color.BLACK, None, None)
-        
+
     #     stack = [root]
     #     node = Node(data, Color.RED, None, None)
     #     while node is not None:
@@ -142,7 +145,7 @@ class RedBlackTreeUtils:
     #         parent = stack[-1]
     #         if parent.color == Color.BLACK:
     #             return root
-            
+
     #     return root
 
 

@@ -19,8 +19,8 @@ class FibonacciHeap:
     cmp: Callable[[int, int], int]
 
     def __post_init__(self) -> None:
-        self._head :Node = None
-        self._n :int = 0
+        self._head: Node = None
+        self._n: int = 0
 
     def push(self, data: int) -> None:
         node = Node(data, 0, False, None, None, None, None)
@@ -70,7 +70,7 @@ class FibonacciHeap:
         if self.cmp(ahead.data, bhead.data) < 0:
             return ahead
         return bhead
-    
+
     def _purge_node(self, node: Node) -> Node:
         if node.psibling is node:
             return None
@@ -84,9 +84,9 @@ class FibonacciHeap:
     def _concatenate(self, head: Node) -> Node:
         if head is None:
             return None
-        
+
         mdegree = self._max_degree()
-        buffer = [None]*(mdegree+1)
+        buffer = [None] * (mdegree + 1)
         curr = head
         while buffer[curr.degree] != curr:
             if buffer[curr.degree] is None:
@@ -106,9 +106,9 @@ class FibonacciHeap:
                 mhead = curr
             curr = curr.nsibling
         return mhead
-        
+
     def _max_degree(self) -> int:
-        return int(math.log2(self._n))+1
+        return int(math.log2(self._n)) + 1
 
     def _merge_nodes(self, anode: Node, bnode: Node) -> Node:
         if self.cmp(anode.data, bnode.data) <= 0:
@@ -132,8 +132,8 @@ class FibonacciHeap:
             curr = curr.nsibling
 
 
-min_cmp = lambda a, b: 0 if a==b else -1 if a < b else 1
-max_cmp = lambda a, b: 0 if a==b else -1 if a > b else 1
+min_cmp = lambda a, b: 0 if a == b else -1 if a < b else 1
+max_cmp = lambda a, b: 0 if a == b else -1 if a > b else 1
 
 fhmin = FibonacciHeap(min_cmp)
 nums = [5, -1, 3, 5, 7, 8, 9, 4, 2]
