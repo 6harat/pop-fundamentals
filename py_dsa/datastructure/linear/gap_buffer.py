@@ -47,4 +47,13 @@ class GapBuffer:
         return f"GapBuffer(gap_size: {self._gap_size}, gap_start: {self._gap_start}, gap_end: {self._gap_end}, n: {self._n})"
 
 
-gb = GapBuffer()
+if __name__ == "__main__":
+    gb = GapBuffer()
+    gb.insert(ord('r'))
+    gb.cursor_left()
+    gb.insert(ord('e'))
+    gb.cursor_right()
+    gb.insert(ord('y'))
+    print(gb.prettyprint())
+    gb.delete()
+    print(gb.prettyprint())
