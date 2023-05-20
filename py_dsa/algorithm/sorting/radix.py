@@ -1,7 +1,8 @@
 import math
+from typing import List
 
 
-def radix_sort(arr):
+def radix_sort(arr: List[int]):
     num_digits = max_digits(max(arr))
     tmp_2darr = [list(range(len(arr)))]
     div_arr = arr[:]
