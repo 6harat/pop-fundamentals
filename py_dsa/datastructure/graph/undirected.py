@@ -137,3 +137,21 @@ graph4 = UndirectedGraph(vertices=list(range(0, 6)),
                              Edge(3, 5, 1),
                              Edge(4, 5, -5)
                          ])
+
+graph5 = UndirectedGraph(vertices=list(range(0, 8)),
+                         edges=[
+                             Edge(0, 1, 10),
+                             Edge(0, 2, 1),
+                             Edge(0, 3, 4),
+                             Edge(1, 2, 3),
+                             Edge(1, 4, 0),
+                             Edge(2, 3, 2),
+                             Edge(2, 5, 8),
+                             Edge(3, 5, 2),
+                             Edge(3, 6, 7),
+                             Edge(4, 5, 1),
+                             Edge(4, 7, 8),
+                             Edge(5, 6, 6),
+                             Edge(5, 7, 9),
+                             Edge(6, 7, 12)
+                         ])
