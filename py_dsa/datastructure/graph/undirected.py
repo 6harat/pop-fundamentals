@@ -48,30 +48,31 @@ class UndirectedGraph:
                 set_tracker.union(edge.source, edge.target)
                 midx += 1
             eidx += 1
-        return None if midx != required_edges else mst
+        return None if midx != required_edges else (mst,
+                                                    sum((edge.weight
+                                                         for edge in mst)))
 
     def prim_mst(self):
-        set_tracker = DisjointSet(self.vertices)
         sorted_edges = sorted(self.edges, key=lambda edge: edge.weight)
         vset = {self._random.randint(0, self._vnum - 1)}
         required_edges = self._vnum - 1
         mst = [None] * required_edges
         midx = 0
         while midx < required_edges and sorted_edges:
-            eidx, edge = next((
-                (eidx, edge) for eidx, edge in enumerate(sorted_edges)
-                if (edge.source in vset or edge.target in vset) and set_tracker
-                .find_set(edge.source) != set_tracker.find_set(edge.target)),
-                              (None, None))
+            eidx, edge = next(
+                ((eidx, edge) for eidx, edge in enumerate(sorted_edges)
+                 if (edge.source in vset) ^ (edge.target in vset)),
+                (None, None))
             if edge is None:
                 return None
             sorted_edges.pop(eidx)
             vset.add(edge.source)
             vset.add(edge.target)
-            set_tracker.union(edge.source, edge.target)
             mst[midx] = edge
             midx += 1
-        return None if midx != required_edges else mst
+        return None if midx != required_edges else (mst,
+                                                    sum((edge.weight
+                                                         for edge in mst)))
 
     def boruvka_mst(self):
         pass
@@ -89,11 +90,50 @@ class UndirectedGraph:
         pass
 
 
-graph1 = UndirectedGraph(vertices=[0, 1, 2, 3],
+graph1 = UndirectedGraph(vertices=list(range(0, 4)),
                          edges=[
                              Edge(0, 1, 10),
                              Edge(0, 2, 6),
                              Edge(0, 3, 5),
                              Edge(1, 3, 15),
                              Edge(2, 3, 4)
+                         ])
+
+graph2 = UndirectedGraph(vertices=list(range(0, 6)),
+                         edges=[
+                             Edge(0, 1, 2),
+                             Edge(0, 2, 5),
+                             Edge(0, 3, 2),
+                             Edge(0, 4, 3),
+                             Edge(1, 3, 0),
+                             Edge(2, 3, 1),
+                             Edge(2, 4, 6),
+                             Edge(3, 4, 4),
+                             Edge(3, 5, 8)
+                         ])
+
+graph3 = UndirectedGraph(vertices=list(range(0, 9)),
+                         edges=[
+                             Edge(0, 1, 6),
+                             Edge(0, 3, 3),
+                             Edge(1, 2, 4),
+                             Edge(1, 4, 2),
+                             Edge(2, 5, 12),
+                             Edge(3, 4, 1),
+                             Edge(3, 6, 8),
+                             Edge(4, 5, 7),
+                             Edge(4, 7, 9),
+                             Edge(5, 8, 10),
+                             Edge(6, 7, 11),
+                             Edge(7, 8, 5)
+                         ])
+
+graph4 = UndirectedGraph(vertices=list(range(0, 6)),
+                         edges=[
+                             Edge(0, 2, 10),
+                             Edge(0, 3, 1),
+                             Edge(2, 3, 1),
+                             Edge(2, 4, 10),
+                             Edge(3, 5, 1),
+                             Edge(4, 5, -5)
                          ])
