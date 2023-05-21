@@ -17,3 +17,9 @@ if (!file("${rootDir}/venv").exists()) {
         commandLine "sh", "-c", "${rootDir}/.devlinks/python -m venv venv"
     }
 }
+
+
+// declare placeholder task
+allprojects {
+    task install {}
+}

@@ -1,5 +1,9 @@
 apply from: "${rootDir}/gradle/scripts/py.gradle"
 
+install {
+    dependsOn("${project.path}:pyDeps")
+}
+
 task check {
     dependsOn("${project.path}:pyCheck")
 }

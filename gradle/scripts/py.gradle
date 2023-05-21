@@ -18,7 +18,6 @@ task pyCheck {
             commandLine "sh", "-c", "${yapfCmd} -d ${projectDir}"
         }
     }
-    dependsOn("${project.path}:pyDeps")
 }
 
 task pyFormat {
@@ -28,5 +27,4 @@ task pyFormat {
             commandLine "sh", "-c", "${yapfCmd} -i ${projectDir}"
         }
     }
-    dependsOn("${project.path}:pyDeps")
 }

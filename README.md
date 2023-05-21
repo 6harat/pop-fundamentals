@@ -18,5 +18,5 @@ org.gradle.java.home=/path/to/repo/.devlinks/java_home
 
 and then execute
 ```
-./gradlew
+./gradlew install
 ```
