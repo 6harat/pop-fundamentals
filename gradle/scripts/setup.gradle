@@ -1,25 +1,29 @@
-// installing git hooks
-def gitHooksSourcePath = "${rootDir}/git_hooks"
-def gitHooksTargetPath = "${rootDir}/.git/hooks"
-fileTree(gitHooksSourcePath).filter {
-    it.isFile() && it.getName().endsWith(".sh")
-}.files.name.forEach {fileName ->
-    exec {
-        commandLine "ln", "-sf", "${gitHooksSourcePath}/${fileName}", "${gitHooksTargetPath}/${fileName.take(fileName.size()-3)}"
-    }
-}
-
-
-// installing python venv
-if (!file("${rootDir}/venv").exists()) {
-    exec {
-        workingDir "${rootDir}"
-        commandLine "sh", "-c", "${rootDir}/.devlinks/python -m venv venv"
-    }
-}
-
-
-// declare placeholder task
 allprojects {
     task install {}
+}
+
+task installGitHooks {
+    def gitHooksSourcePath = "${rootDir}/git_hooks"
+    def gitHooksTargetPath = "${rootDir}/.git/hooks"
+    fileTree(gitHooksSourcePath).filter {
+        it.isFile() && it.getName().endsWith(".sh")
+    }.files.name.forEach {fileName ->
+        exec {
+            commandLine "ln", "-sf", "${gitHooksSourcePath}/${fileName}", "${gitHooksTargetPath}/${fileName.take(fileName.size()-3)}"
+        }
+    }
+}
+
+task installPythonVenv {
+    if (!file("${rootDir}/venv").exists()) {
+        exec {
+            workingDir "${rootDir}"
+            commandLine "sh", "-c", "${rootDir}/.devlinks/python -m venv venv"
+        }
+    }
+}
+
+install {
+    dependsOn("${project.path}:installGitHooks")
+    dependsOn("${project.path}:installPythonVenv")
 }
