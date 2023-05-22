@@ -1,21 +1,20 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath "com.diffplug.spotless:spotless-plugin-gradle:6.18.0"
+    }
+}
+
 repositories {
     mavenCentral()
 }
 
+apply from: "${rootDir}/gradle/scripts/jdk.gradle"
 apply plugin: "application"
-
-ext {
-    junit5Version = "5.9.1"
-}
-
-dependencies {
-    testImplementation "org.junit.jupiter:junit-jupiter:${project.junit5Version}"
-}
 
 application {
     mainClass = "io.pop.App"
-}
-
-test {
-    useJUnitPlatform()
 }
