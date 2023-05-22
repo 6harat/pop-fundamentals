@@ -1,3 +1,4 @@
 rootProject.name = "pop-fundamentals"
 
+include "jdk_module"
 include "py_dsa"
