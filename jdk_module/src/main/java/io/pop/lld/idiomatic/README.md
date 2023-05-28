@@ -11,3 +11,7 @@ polymorphism
 
 continuation passing style
 hash consing
+
+naked objects
+active record
+broker
