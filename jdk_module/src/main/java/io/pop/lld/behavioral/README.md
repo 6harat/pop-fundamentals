@@ -4,6 +4,7 @@ command
 iterator
 memento
 observer / pub-sub
+weak map based observer
 time based observer (when update frequency is very high)
 state
 strategy
