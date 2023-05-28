@@ -6,8 +6,8 @@ import io.pop.lld.behavioral.observer.domain.Notification;
 
 public class EmailNotifier implements Subscriber<Notification> {
 
-    @Override
-    public void onUpdate(Event event, Notification notification) {
-        System.out.println("notified on email: " + notification.getData());
-    }
+  @Override
+  public void onUpdate(Event event, Notification notification) {
+    System.out.println("notified on email: " + notification.getData());
+  }
 }
