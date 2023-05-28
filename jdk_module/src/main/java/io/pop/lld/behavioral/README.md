@@ -4,6 +4,7 @@ command
 iterator
 memento
 observer / pub-sub
+time based observer (when update frequency is very high)
 state
 strategy
 visitor / walker

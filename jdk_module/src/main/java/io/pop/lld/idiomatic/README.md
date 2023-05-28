@@ -15,3 +15,5 @@ hash consing
 naked objects
 active record
 broker
+
+dispose pattern
